@@ -12,5 +12,5 @@
 
 <h3>History</h3>
 <mat-list role="list">
-  <mat-list-item role="listitem" *ngFor="let event of history">{{event}}</mat-list-item>
+  <mat-list-item role="listitem" *ngFor="let event of history.reverse()">{{event}}</mat-list-item>
 </mat-list>

@@ -9,7 +9,8 @@ import {MissionService} from '../mission.service';
 export class MissionControlComponent implements OnInit {
   astronauts = ['Lovell', 'Swigert', 'Haise'];
   history: string[] = [];
-  missions = ['Fly to the moon!',
+  missions = [
+    'Fly to the moon!',
     'Fly to mars!',
     'Fly to Vegas!'];
   nextMission = 0;
