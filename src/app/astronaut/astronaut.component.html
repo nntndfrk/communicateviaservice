@@ -1,0 +1,12 @@
+<p>
+  {{astronaut}}: <strong>{{mission}}</strong>
+  <button
+    mat-mini-fab
+    color="primary"
+    (click)="confirm()"
+    [disabled]="!announced || confirmed">
+    <i class="material-icons">
+      check_circle_outline
+    </i>
+  </button>
+</p>
