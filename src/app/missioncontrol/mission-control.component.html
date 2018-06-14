@@ -1,5 +1,5 @@
-<h2>Mission Control</h2>
-<button mat-raised-button color="primary" (click)="announce()">Announce mission</button>
+<h2 class="mat-title">Центр управление космическими миссиями</h2>
+<button mat-raised-button color="primary" (click)="announce()">Объявить миссию</button>
 <mat-list role="list" *ngFor="let astronaut of astronauts">
   <mat-list-item role="listitem">
     <app-astronaut [astronaut]="astronaut">
@@ -10,7 +10,7 @@
 
 
 
-<h3>History</h3>
+<h3 class="mat-subheading-2">Лог</h3>
 <mat-list role="list">
-  <mat-list-item role="listitem" *ngFor="let event of history.reverse()">{{event}}</mat-list-item>
+  <mat-list-item role="listitem" *ngFor="let event of history.reverse()" class="log">{{event}}</mat-list-item>
 </mat-list>

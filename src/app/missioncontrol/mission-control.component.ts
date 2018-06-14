@@ -7,12 +7,12 @@ import {MissionService} from '../mission.service';
   styleUrls: ['./mission-control.component.scss']
 })
 export class MissionControlComponent implements OnInit {
-  astronauts = ['Lovell', 'Swigert', 'Haise'];
+  astronauts = ['Василий', 'Юрий', 'Андрей'];
   history: string[] = [];
   missions = [
-    'Fly to the moon!',
-    'Fly to mars!',
-    'Fly to Vegas!'];
+    'Полететь на Луну!',
+    'Полететь на Марс!',
+    'Полететь на Венеру!'];
   nextMission = 0;
 
   constructor(private missionService: MissionService) {
@@ -21,14 +21,14 @@ export class MissionControlComponent implements OnInit {
   ngOnInit() {
     this.missionService.missionConfirmed$.subscribe(
       astronaut => {
-        this.history.push(`${astronaut} confirmed the mission`);
+        this.history.push(`${astronaut} готов принять участие в миссии!`);
       });
   }
 
   announce() {
     const mission = this.missions[this.nextMission++];
     this.missionService.announceMission(mission);
-    this.history.push(`Mission "${mission}" announced`);
+    this.history.push(`Миссия "${mission}" ждет своего героя!`);
     if (this.nextMission >= this.missions.length) {
       this.nextMission = 0;
     }

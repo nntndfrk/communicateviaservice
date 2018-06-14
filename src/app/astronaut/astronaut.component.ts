@@ -10,7 +10,7 @@ import {MissionService} from '../mission.service';
 export class AstronautComponent implements OnInit, OnDestroy {
   @Input() astronaut: string;
 
-  mission = '<no mission announced>';
+  mission = '< пока нет заявленных миссий >';
   confirmed = false;
   announced = false;
   subscription: Subscription;
