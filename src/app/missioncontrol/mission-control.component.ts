@@ -1,28 +1,27 @@
-import {Component, OnInit} from '@angular/core';
-import {MissionService} from '../mission.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { MissionService } from '../mission.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-mission-control',
   templateUrl: './mission-control.component.html',
   styleUrls: ['./mission-control.component.scss']
 })
-export class MissionControlComponent implements OnInit {
+export class MissionControlComponent implements OnInit, OnDestroy {
   astronauts = ['Василий', 'Юрий', 'Андрей'];
   history: string[] = [];
-  missions = [
-    'Полететь на Луну!',
-    'Полететь на Марс!',
-    'Полететь на Венеру!'];
+  missions = ['Полететь на Луну!', 'Полететь на Марс!', 'Полететь на Венеру!'];
+  subscription: Subscription;
   nextMission = 0;
 
-  constructor(private missionService: MissionService) {
-  }
+  constructor(private missionService: MissionService) {}
 
   ngOnInit() {
-    this.missionService.missionConfirmed$.subscribe(
+    this.subscription = this.missionService.missionConfirmed$.subscribe(
       astronaut => {
         this.history.push(`${astronaut} готов принять участие в миссии!`);
-      });
+      }
+    );
   }
 
   announce() {
@@ -34,4 +33,7 @@ export class MissionControlComponent implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }
